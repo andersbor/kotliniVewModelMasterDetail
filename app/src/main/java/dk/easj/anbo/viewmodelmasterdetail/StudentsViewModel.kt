@@ -15,6 +15,8 @@ class StudentsViewModel : ViewModel() {
 
     var students: LiveData<List<Student>> = _students
 
+    val adding: MutableLiveData<Boolean> = MutableLiveData(false)
+
     fun add(student: Student) {
         student.id = _nextId++
         _studentsList.add(student)

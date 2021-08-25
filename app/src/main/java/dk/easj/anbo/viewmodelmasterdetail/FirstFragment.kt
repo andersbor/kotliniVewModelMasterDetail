@@ -17,9 +17,6 @@ class FirstFragment : Fragment() {
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
-
-    // Use the 'by activityViewModels()' Kotlin property delegate
-    // from the fragment-ktx artifact
     private val model: StudentsViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -38,6 +35,7 @@ class FirstFragment : Fragment() {
         val students: List<Student> = model.students.value!!
         val adapter = MyAdapter(students) { position ->
             model.selected.value = model[position]
+            model.adding.value = false
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         binding.recyclerView.adapter = adapter

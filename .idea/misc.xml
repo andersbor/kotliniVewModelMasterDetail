@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/andersb/kotlin2/ViewModelMasterDetail/app/src/main/res/layout/activity_main.xml" value="0.20572916666666666" />
+        <entry key="..\:/andersb/kotlin2/ViewModelMasterDetail/app/src/main/res/layout/content_main.xml" value="0.20572916666666666" />
         <entry key="..\:/andersb/kotlin2/ViewModelMasterDetail/app/src/main/res/layout/fragment_first.xml" value="0.17857142857142858" />
         <entry key="..\:/andersb/kotlin2/ViewModelMasterDetail/app/src/main/res/layout/fragment_second.xml" value="0.2558876811594203" />
         <entry key="..\:/andersb/kotlin2/ViewModelMasterDetail/app/src/main/res/layout/list_item.xml" value="0.2558876811594203" />

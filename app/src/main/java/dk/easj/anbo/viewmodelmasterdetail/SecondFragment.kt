@@ -1,10 +1,10 @@
 package dk.easj.anbo.viewmodelmasterdetail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import dk.easj.anbo.viewmodelmasterdetail.databinding.FragmentSecondBinding
@@ -13,11 +13,9 @@ import dk.easj.anbo.viewmodelmasterdetail.databinding.FragmentSecondBinding
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class SecondFragment : Fragment() {
-
     private var _binding: FragmentSecondBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     private val model: StudentsViewModel by activityViewModels()
@@ -32,6 +30,13 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (model.adding.value!!) {
+            binding.textviewId.visibility = View.GONE
+            binding.buttonDelete.visibility = View.GONE
+            binding.buttonUpdate.visibility = View.GONE
+        } else {
+            binding.buttonAdd.visibility = View.GONE
+        }
 
         val selectedStudent: Student? = model.selected.value
         if (selectedStudent == null) {
@@ -58,14 +63,15 @@ class SecondFragment : Fragment() {
             val address = binding.edittextAddress.text.trim().toString()
             val semester = binding.edittextSemester.text.trim().toString().toInt()
             val yearOfBirth = binding.edittextYearOfBirth.text.trim().toString().toInt()
-            val student = Student(name = name, address=address, semester = semester, yearOfBirth = yearOfBirth)
+            val student = Student(
+                name = name,
+                address = address,
+                semester = semester,
+                yearOfBirth = yearOfBirth
+            )
             model.add(student)
             findNavController().popBackStack()
         }
-
-        /*binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }*/
     }
 
     override fun onDestroyView() {

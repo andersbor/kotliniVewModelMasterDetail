@@ -8,6 +8,6 @@ class Student(
     val semester: Int
 ) {
     override fun toString(): String {
-        return "$id $name";
+        return "$id $name"
     }
 }
