@@ -27,6 +27,15 @@ class StudentsViewModel : ViewModel() {
         _studentsList.removeAll { student -> student.id == id }
     }
 
+    fun update(id: Int, info: Student) {
+        val student: Student = _studentsList.first { st -> st.id == id }
+        student.name = info.name
+        student.address = info.address
+        student.yearOfBirth = info.yearOfBirth
+        student.semester = info.semester
+       // _students.value = _studentsList
+    }
+
     operator fun get(position: Int): Student { // [] operator overloading
         return _studentsList[position]
     }

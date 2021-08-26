@@ -1,0 +1,5 @@
+separate Fragment for adding?
+
+secondFragment:
+duplicate code add+update: Refactor
+refactor: rename secondFragment

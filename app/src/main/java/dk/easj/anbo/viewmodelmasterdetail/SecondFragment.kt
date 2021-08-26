@@ -72,6 +72,21 @@ class SecondFragment : Fragment() {
             model.add(student)
             findNavController().popBackStack()
         }
+
+        binding.buttonUpdate.setOnClickListener {
+            val name = binding.edittextName.text.trim().toString()
+            val address = binding.edittextAddress.text.trim().toString()
+            val semester = binding.edittextSemester.text.trim().toString().toInt()
+            val yearOfBirth = binding.edittextYearOfBirth.text.trim().toString().toInt()
+            val student = Student(
+                name = name,
+                address = address,
+                semester = semester,
+                yearOfBirth = yearOfBirth
+            )
+            model.update(selectedStudent!!.id, student)
+            findNavController().popBackStack()
+        }
     }
 
     override fun onDestroyView() {
