@@ -1,19 +1,15 @@
 package dk.easj.anbo.viewmodelmasterdetail
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import androidx.activity.viewModels
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import dk.easj.anbo.viewmodelmasterdetail.databinding.ActivityMainBinding
-import java.security.KeyStore
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -37,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
             //    .setAction("Action", null).show()
             model.adding.value = true
-            navController.navigate(R.id.SecondFragment)
+            navController.navigate(R.id.StudentDetailFragment)
         }
     }
 

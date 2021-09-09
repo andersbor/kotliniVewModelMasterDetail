@@ -11,10 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dk.easj.anbo.viewmodelmasterdetail.databinding.FragmentFirstBinding
 
 
-class FirstFragment : Fragment() {
+class StudentListFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
-
-    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     private val model: StudentsViewModel by activityViewModels()
@@ -33,7 +31,7 @@ class FirstFragment : Fragment() {
         // configure RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         val students: List<Student> = model.students.value!!
-        val adapter = MyAdapter(students) { position ->
+        val adapter = StudentsAdapter(students) { position ->
             model.selected.value = model[position]
             model.adding.value = false
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)

@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter<T>(private val items: List<T>, private val onItemClicked: (position: Int) -> Unit) :
-    RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class StudentsAdapter(
+    private val items: List<Student>,
+    private val onItemClicked: (position: Int) -> Unit
+) :
+    RecyclerView.Adapter<StudentsAdapter.MyViewHolder>() {
 
     override fun getItemCount(): Int {
         return items.size
@@ -23,12 +26,14 @@ class MyAdapter<T>(private val items: List<T>, private val onItemClicked: (posit
     override fun onBindViewHolder(viewHolder: MyViewHolder, position: Int) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textView.text = items[position].toString()
+        viewHolder.textViewStudentId.text = items[position].id.toString()
+        viewHolder.textViewStudentName.text = items[position].name
     }
 
     class MyViewHolder(itemView: View, private val onItemClicked: (position: Int) -> Unit) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        val textView: TextView = itemView.findViewById(R.id.textview_list_item)
+        val textViewStudentId: TextView = itemView.findViewById(R.id.list_item_id)
+        val textViewStudentName: TextView = itemView.findViewById(R.id.list_item_name)
 
         init {
             itemView.setOnClickListener(this)
