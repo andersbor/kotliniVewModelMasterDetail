@@ -15,7 +15,7 @@ class StudentListFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
 
-    private val model: StudentsViewModel by activityViewModels()
+    private val viewModel: StudentsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,10 +30,10 @@ class StudentListFragment : Fragment() {
 
         // configure RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-        val students: List<Student> = model.students.value!!
+        val students: List<Student> = viewModel.students.value!!
         val adapter = StudentsAdapter(students) { position ->
-            model.selected.value = model[position]
-            model.adding.value = false
+            viewModel.selected.value = viewModel[position]
+            viewModel.adding.value = false
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         binding.recyclerView.adapter = adapter
