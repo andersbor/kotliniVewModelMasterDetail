@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dk.easj.anbo.viewmodelmasterdetail.databinding.FragmentFirstBinding
 
 class StudentListFragment : Fragment() {
@@ -29,6 +30,8 @@ class StudentListFragment : Fragment() {
 
         // configure RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+        // binding.recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, true)
+        // binding.recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
         val students: List<Student> = viewModel.students.value!!
         val adapter = StudentsAdapter(students) { position ->
             viewModel.selected.value = viewModel[position]
