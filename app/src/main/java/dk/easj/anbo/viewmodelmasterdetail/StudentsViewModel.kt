@@ -8,7 +8,7 @@ class StudentsViewModel : ViewModel() {
     private var _nextId = 1
     private var _studentsList = mutableListOf(
         Student(_nextId++, "Anders", "Roskilde", 1966, 59),
-        Student(_nextId++, "Benjamin", "Ringsted", 1992, 4)
+        Student(_nextId++, "Carlo", "Ringsted", 1992, 4)
     )
     private var _students = MutableLiveData<List<Student>>(_studentsList)
     val selected = MutableLiveData<Student>()

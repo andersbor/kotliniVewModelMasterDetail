@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import dk.easj.anbo.viewmodelmasterdetail.databinding.FragmentFirstBinding
 
 class StudentListFragment : Fragment() {
@@ -30,6 +29,7 @@ class StudentListFragment : Fragment() {
 
         // configure RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+        // https://medium.com/geekculture/everything-you-should-know-to-create-a-recyclerview-3defdb660a2f
         // binding.recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, true)
         // binding.recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
         val students: List<Student> = viewModel.students.value!!
