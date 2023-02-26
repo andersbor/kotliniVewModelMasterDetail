@@ -28,17 +28,20 @@ class StudentListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // configure RecyclerView
-        binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+
         // https://medium.com/geekculture/everything-you-should-know-to-create-a-recyclerview-3defdb660a2f
         // binding.recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, true)
         // binding.recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
-        val students: List<Student> = viewModel.students.value!!
-        val adapter = StudentsAdapter(students) { position ->
-            viewModel.selected.value = viewModel[position]
-            viewModel.adding.value = false
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        //val students: List<Student> = viewModel.students.value!!
+        viewModel.students.observe(viewLifecycleOwner) {students->
+            binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+            val adapter = StudentsAdapter(students) { position ->
+                viewModel.selected.value = viewModel[position]
+                viewModel.adding.value = false
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            }
+            binding.recyclerView.adapter = adapter
         }
-        binding.recyclerView.adapter = adapter
     }
 
     override fun onDestroyView() {
